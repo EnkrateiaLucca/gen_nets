@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import numpy as np
 import random
-from utils import Dataset, Dataprep
 from time import time
+from utils import Dataprep, Dataset
 
 class Siamese1:
     """Implementation of a Siamese network that uses contrastive loss, offering
@@ -54,7 +54,6 @@ class Siamese1:
         shape1, shape2 = shapes
         return (shape1[0], 1)
 
-
     def digits_inds(self, labels, n_classes=2):
         """Gets the indices for number of different classes we want to train our
         model on
@@ -75,8 +74,6 @@ class Siamese1:
         """
         digit_indices = [np.where(labels==i)[0] for i in range(n_classes)]
         return digit_indices
-
-
 
     def pairs(self,x,y, n_classes=2):
         """Create the genuine and impostor pairs, as in Le Cun's paper:
@@ -113,8 +110,6 @@ class Siamese1:
                 labels += [0, 1]
         return np.array(pairs), np.array(labels)
 
-
-
     def get_data_prep(self, name = "mnist"):
         """Loads and preprocess the traning and testing data. Replaces the
         standard ways of loading conventional datasets, makes it easier to
@@ -124,7 +119,7 @@ class Siamese1:
         ----------
         name : string
             A string with the name of standard datasets whithin: mnist,
-            fashion_mnist and cifar10.
+            fashion_mnist, cifar10 and cifar100.
 
         Returns
         -------
@@ -142,35 +137,14 @@ class Siamese1:
         y_test = dataprep.y_test
         return x_train, y_train, x_test, y_test
 
-    #in the future i intend to include an option for controling some parameters
-    #in the model
-    def model_1_CNN(self,input_shape):
-        """Creates a convolutional network whose last layer is a fully conected
-        without activation so that an encoding can be calculated
 
-        Parameters
-        ----------
-        input_shape : tuple
-            Gets the shape of the current dataset being used
 
-        Returns
-        -------
-        type: keras.models.Model object
-            Returns a convolutional model without the last layer activation
 
-        """
-        input = Input(shape = input_shape)
-        X = ZeroPadding2D((3, 3))(input)
-        X = Conv2D(32, (3, 3), strides = (1, 1), name = 'conv0', activation="relu")(X)
-        X = MaxPooling2D((2, 2), name='max_pool')(X)
-        X = Flatten()(X)
-        X = Dense(10)(X)
-
-        return Model(input,X)
-
-    def model_2_deep_Net(self, input_shape):
+    def model_2_deep_Net(self, input_shape, nb_layers = 3,activation = 'relu'):
         """Creates a neural network with one hidden layer and 20 nodes as in:
-        http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf
+        http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf,
+        the other layer options were chosen based on empirical observation to
+        generate good candidates for the traiining with the genetic algorithm
 
         Parameters
         ----------
@@ -185,8 +159,20 @@ class Siamese1:
         """
         input = Input(shape = input_shape)
         X = Flatten()(input)
-        X = Dense(20, activation='relu')(X)
-        X = Dense(3)(X)
+        if nb_layers == 1:
+            X = Dense(10, activation = activation)(X)
+        if nb_layers == 2:
+            X = Dense(20, activation=activation)(X)
+            X = Dense(3)(X)
+        if nb_layers == 3:
+            X = Dense(20, activation=activation)(X)
+            X = Dense(16, activation=activation)(X)
+            X = Dense(2)(X)
+        if nb_layers == 4:
+            X = Dense(20, activation=activation)(X)
+            X = Dense(16, activation=activation)(X)
+            X = Dense(8, activation=activation)(X)
+            X = Dense(4)(X)
 
         return Model(input, X)
 
@@ -216,7 +202,7 @@ class Siamese1:
 
         return c_loss
 
-    def get_model(self,input_shape, nnet = False):
+    def get_model(self,input_shape, nb_layers=2, activation = 'relu',nnet = True):
         """Gets the model desired between teo choices: basic convolutional model
         or a neural network model
 
@@ -234,20 +220,18 @@ class Siamese1:
             Returns the full siamese model that can be compiled.
 
         """
+
         input_a = Input(shape=input_shape)
         input_b = Input(shape=input_shape)
         if nnet:
-            deep_model = self.model_2_deep_Net(input_shape)
+            deep_model = self.model_2_deep_Net(input_shape, nb_layers = nb_layers,activation = activation)
             encoded_a = deep_model(input_a)
             encoded_b = deep_model(input_b)
-        else:
-            conv_model = self.model_1_CNN(input_shape)
-            encoded_a = conv_model(input_a)
-            encoded_b = conv_model(input_b)
 
         d_w = Lambda(self.Dw,output_shape=self.Dw_output_shape)([encoded_a, encoded_b])
 
         model = Model([input_a, input_b], d_w)
+
         return model
 
     def accuracy(self,label, prediction):
@@ -270,31 +254,7 @@ class Siamese1:
 
         return acc
 
-    def optimizers(self, name = "adam"):
-        """Gives the possibility of choosing standard optmizers
-
-        Parameters
-        ----------
-        name : string
-            Choice of three standard optimizers for siamese: adam, rmsprop and
-            stochastica gradient descent.
-
-        Returns
-        -------
-        type: keras.optimizers object
-            Returns type of optimizer
-        """
-        sgd = keras.optimizers.SGD()
-        rms = keras.optimizers.RMSprop()
-        adam = keras.optimizers.Adam()
-        if name == "adam":
-            return adam
-        elif name == "rms":
-            return rms
-        elif name == "sgd":
-            return sgd
-
-    def plot_training(self, history, savefig = False):
+    def plot_training(self, history, savefig = False, show=False):
         """Plots the training accuracy and loss"""
 
         figure = plt.figure(2)
@@ -307,29 +267,6 @@ class Siamese1:
         plt.title("Loss")
         if savefig:
             plt.savefig("training.png")
-        plt.show()
-        acc_list = history.history["accuracy"]
-        print(np.mean(acc_list))
-
-
-
-
-
-
-def run():
-    siam = Siamese1()
-    x_train, y_train, x_test, y_test = siam.get_data_prep(name="fashion_mnist")
-    tr_pairs, tr_y = siam.pairs(x_train,y_train)
-    te_pairs, te_y = siam.pairs(x_test, y_test)
-    input_shape=(x_train.shape[1:])
-    siamese_model = siam.get_model(input_shape=input_shape, nnet=True)
-    adam = siam.optimizers(name = "sgd")
-    siamese_model.compile(optimizer=adam, loss=siam.c_loss_1, metrics = [siam.accuracy])
-    tensorboard = keras.callbacks.TensorBoard(log_dir='./logs/{}'.format(time()), write_graph=True)
-    history = siamese_model.fit([tr_pairs[:, 0], tr_pairs[:, 1]], tr_y, validation_split=0.2,
-                  batch_size=128, callbacks = [tensorboard], epochs=10)
-    siam.plot_training(history)
-
-
-if __name__ == "__main__":
-    run()
+            plt.close()
+        if show:
+            plt.show()

@@ -1,0 +1,39 @@
+01/14/2019 12:02:30 AM - INFO - ***Evolving 5 generations with population 5***
+01/14/2019 12:02:30 AM - INFO - ***Doing generation 1 of 5***
+01/14/2019 12:03:09 AM - DEBUG - update_title_pos
+01/14/2019 12:03:09 AM - DEBUG - findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/lucas/anaconda3/envs/env_1/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+01/14/2019 12:03:10 AM - DEBUG - findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0 to DejaVu Sans ('/home/lucas/anaconda3/envs/env_1/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+01/14/2019 12:03:10 AM - DEBUG - update_title_pos
+01/14/2019 12:03:10 AM - INFO - Generation average: 98.09366534704665
+01/14/2019 12:03:10 AM - INFO - --------------------------------------------------------------------------------
+01/14/2019 12:03:10 AM - INFO - ***Doing generation 2 of 5***
+01/14/2019 12:03:26 AM - DEBUG - update_title_pos
+01/14/2019 12:03:26 AM - DEBUG - update_title_pos
+01/14/2019 12:03:26 AM - INFO - Generation average: 98.45353198684886
+01/14/2019 12:03:26 AM - INFO - --------------------------------------------------------------------------------
+01/14/2019 12:03:26 AM - INFO - ***Doing generation 3 of 5***
+01/14/2019 12:03:43 AM - DEBUG - update_title_pos
+01/14/2019 12:03:43 AM - DEBUG - update_title_pos
+01/14/2019 12:03:43 AM - INFO - Generation average: 98.47895394921127
+01/14/2019 12:03:43 AM - INFO - --------------------------------------------------------------------------------
+01/14/2019 12:03:43 AM - INFO - ***Doing generation 4 of 5***
+01/14/2019 12:04:09 AM - DEBUG - update_title_pos
+01/14/2019 12:04:09 AM - DEBUG - update_title_pos
+01/14/2019 12:04:09 AM - INFO - Generation average: 99.00041675480684
+01/14/2019 12:04:09 AM - INFO - --------------------------------------------------------------------------------
+01/14/2019 12:04:09 AM - INFO - ***Doing generation 5 of 5***
+01/14/2019 12:04:34 AM - DEBUG - update_title_pos
+01/14/2019 12:04:34 AM - DEBUG - update_title_pos
+01/14/2019 12:04:34 AM - INFO - Generation average: 99.05251094052436
+01/14/2019 12:04:34 AM - INFO - --------------------------------------------------------------------------------
+01/14/2019 12:04:34 AM - INFO - --------------------------------------------------------------------------------
+01/14/2019 12:04:34 AM - INFO - {'nb_layers': 3, 'activation': 'relu', 'optimizer': 'adam'}
+01/14/2019 12:04:34 AM - INFO - Network accuracy:
+01/14/2019 12:04:34 AM - INFO - {'nb_layers': 4, 'activation': 'relu', 'optimizer': 'adam'}
+01/14/2019 12:04:34 AM - INFO - Network accuracy:
+01/14/2019 12:04:34 AM - INFO - {'nb_layers': 3, 'activation': 'relu', 'optimizer': 'adam'}
+01/14/2019 12:04:34 AM - INFO - Network accuracy:
+01/14/2019 12:04:34 AM - INFO - {'nb_layers': 3, 'activation': 'relu', 'optimizer': 'adam'}
+01/14/2019 12:04:34 AM - INFO - Network accuracy:
+01/14/2019 12:04:34 AM - INFO - {'nb_layers': 3, 'activation': 'relu', 'optimizer': 'adam'}
+01/14/2019 12:04:34 AM - INFO - Network accuracy:

@@ -1,4 +1,3 @@
-
 import tensorflow as tf
 import numpy as np
 import random
@@ -38,7 +37,7 @@ class Dataset:
             perm = np.random.permutation(len(self.x_train))
             self.x_train = self.x_train[perm][:num_samples_from_training]
             self.y_train = self.y_train[perm][:num_samples_from_training]
-        #self.y_train = keras.utils.np_utils.to_categorical(self.y_train)
+
         self.load_data = (self.x_train, self.y_train,self.x_test, self.y_test)
 
     @property
@@ -87,11 +86,4 @@ class Dataprep:
         self.x_train /= 255.0
         self.x_test /= 255.0
 
-    def standardize(self):
-        """"""
-        pass
-
-# if __name__ == "__main__":
-#     dset = Dataset(name = "cifar10")
-#     x_train, y_train, x_test, y_test = dset.x_train, dset.y_train, dset.x_test, dset.y_test
-#     print(x_train.shape[])
+    
