@@ -1,0 +1,64 @@
+01/14/2019 10:03:24 PM - INFO - ***Evolving 10 generations with population 10***
+01/14/2019 10:03:24 PM - INFO - ***Doing generation 1 of 10***
+01/14/2019 10:04:31 PM - DEBUG - update_title_pos
+01/14/2019 10:04:31 PM - DEBUG - findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/lucas/anaconda3/envs/env_1/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+01/14/2019 10:04:31 PM - DEBUG - findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0 to DejaVu Sans ('/home/lucas/anaconda3/envs/env_1/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+01/14/2019 10:04:31 PM - DEBUG - update_title_pos
+01/14/2019 10:04:31 PM - INFO - Generation average: 99.28696569920845
+01/14/2019 10:04:31 PM - INFO - --------------------------------------------------------------------------------
+01/14/2019 10:04:31 PM - INFO - ***Doing generation 2 of 10***
+01/14/2019 10:05:17 PM - DEBUG - update_title_pos
+01/14/2019 10:05:17 PM - DEBUG - update_title_pos
+01/14/2019 10:05:17 PM - INFO - Generation average: 99.88005277044856
+01/14/2019 10:05:17 PM - INFO - --------------------------------------------------------------------------------
+01/14/2019 10:05:17 PM - INFO - ***Doing generation 3 of 10***
+01/14/2019 10:06:03 PM - DEBUG - update_title_pos
+01/14/2019 10:06:03 PM - DEBUG - update_title_pos
+01/14/2019 10:06:03 PM - INFO - Generation average: 99.90474934036939
+01/14/2019 10:06:03 PM - INFO - --------------------------------------------------------------------------------
+01/14/2019 10:06:03 PM - INFO - ***Doing generation 4 of 10***
+01/14/2019 10:06:45 PM - DEBUG - update_title_pos
+01/14/2019 10:06:45 PM - DEBUG - update_title_pos
+01/14/2019 10:06:45 PM - INFO - Generation average: 99.88918205804751
+01/14/2019 10:06:45 PM - INFO - --------------------------------------------------------------------------------
+01/14/2019 10:06:45 PM - INFO - ***Doing generation 5 of 10***
+01/14/2019 10:07:36 PM - DEBUG - update_title_pos
+01/14/2019 10:07:36 PM - DEBUG - update_title_pos
+01/14/2019 10:07:36 PM - INFO - Generation average: 99.90717678099635
+01/14/2019 10:07:36 PM - INFO - --------------------------------------------------------------------------------
+01/14/2019 10:07:36 PM - INFO - ***Doing generation 6 of 10***
+01/14/2019 10:08:21 PM - DEBUG - update_title_pos
+01/14/2019 10:08:21 PM - DEBUG - update_title_pos
+01/14/2019 10:08:21 PM - INFO - Generation average: 99.91087071240105
+01/14/2019 10:08:21 PM - INFO - --------------------------------------------------------------------------------
+01/14/2019 10:08:21 PM - INFO - ***Doing generation 7 of 10***
+01/14/2019 10:09:16 PM - DEBUG - update_title_pos
+01/14/2019 10:09:16 PM - DEBUG - update_title_pos
+01/14/2019 10:09:16 PM - INFO - Generation average: 99.9145118733509
+01/14/2019 10:09:16 PM - INFO - --------------------------------------------------------------------------------
+01/14/2019 10:09:16 PM - INFO - ***Doing generation 8 of 10***
+01/14/2019 10:10:12 PM - DEBUG - update_title_pos
+01/14/2019 10:10:13 PM - DEBUG - update_title_pos
+01/14/2019 10:10:13 PM - INFO - Generation average: 99.91255936675462
+01/14/2019 10:10:13 PM - INFO - --------------------------------------------------------------------------------
+01/14/2019 10:10:13 PM - INFO - ***Doing generation 9 of 10***
+01/14/2019 10:10:50 PM - DEBUG - update_title_pos
+01/14/2019 10:10:50 PM - DEBUG - update_title_pos
+01/14/2019 10:10:50 PM - INFO - Generation average: 99.85989445910292
+01/14/2019 10:10:50 PM - INFO - --------------------------------------------------------------------------------
+01/14/2019 10:10:50 PM - INFO - ***Doing generation 10 of 10***
+01/14/2019 10:11:50 PM - DEBUG - update_title_pos
+01/14/2019 10:11:50 PM - DEBUG - update_title_pos
+01/14/2019 10:11:50 PM - INFO - Generation average: 99.90970976253297
+01/14/2019 10:11:50 PM - INFO - --------------------------------------------------------------------------------
+01/14/2019 10:11:50 PM - INFO - --------------------------------------------------------------------------------
+01/14/2019 10:11:50 PM - INFO - {'nb_layers': 3, 'activation': 'relu', 'optimizer': 'adagrad'}
+01/14/2019 10:11:50 PM - INFO - Network accuracy:
+01/14/2019 10:11:50 PM - INFO - {'nb_layers': 3, 'activation': 'tanh', 'optimizer': 'rmsprop'}
+01/14/2019 10:11:50 PM - INFO - Network accuracy:
+01/14/2019 10:11:50 PM - INFO - {'nb_layers': 3, 'activation': 'relu', 'optimizer': 'adagrad'}
+01/14/2019 10:11:50 PM - INFO - Network accuracy:
+01/14/2019 10:11:50 PM - INFO - {'nb_layers': 3, 'activation': 'tanh', 'optimizer': 'rmsprop'}
+01/14/2019 10:11:50 PM - INFO - Network accuracy:
+01/14/2019 10:11:50 PM - INFO - {'nb_layers': 3, 'activation': 'relu', 'optimizer': 'rmsprop'}
+01/14/2019 10:11:50 PM - INFO - Network accuracy:

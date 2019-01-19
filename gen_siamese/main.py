@@ -4,13 +4,15 @@ from optimizer import Optimizer
 from tqdm import tqdm
 import os
 import matplotlib.pyplot as plt
+import numpy as np
+
 # Setup logging.
 
 logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
     datefmt='%m/%d/%Y %I:%M:%S %p',
     level=logging.DEBUG,
-    filename='log_{}.txt'.format('fashion_mnist')
+    filename='log_{}.txt'.format('mnist')
 )
 
 
@@ -23,13 +25,25 @@ def train_networks(networks, dataset, curr_gen_num):
         networks (list): Current population of networks
         dataset (str): Dataset to use for training/evaluating
     """
-
+    net_num = 0
     pbar = tqdm(total=len(networks))
+    acc_list = []
     print("This is the total size of the current network: {}".format(len(networks)))
     for network in networks:
         network.train(dataset, curr_gen_num)
+        plt.plot(network.ind_acc)
+        acc_list.append(network.ind_acc)
         pbar.update(1)
+
+
     pbar.close()
+    averages = [np.around(np.mean(acc), 2) for acc in acc_list]
+    plt.title("generation {} average accuracy: {}".format(curr_gen_num,np.mean(averages)))
+    plt.xlabel(xlabel='Epochs')
+    plt.ylabel(ylabel='Accuracy')
+    plt.savefig('acc')
+    plt.close()
+    os.chdir('../')
 
 def get_average_accuracy(networks):
     """Get the average accuracy for a group of networks.
@@ -70,6 +84,7 @@ def generate(generations, population, nn_param_choices, dataset):
     for i in range(generations):
         os.mkdir('./training_session_gen_{}'.format(i+1))
         print("Doing generation: {}".format(i+1))
+        os.chdir('./training_session_gen_{}'.format(i+1))
         logging.info("***Doing generation {} of {}***".format(i + 1, generations))
 
         # Train and get accuracy for networks.
@@ -77,11 +92,8 @@ def generate(generations, population, nn_param_choices, dataset):
 
         # Get the average accuracy for this generation.
         average_accuracy, acc_list = get_average_accuracy(networks)
-        print("THis is the average_accuracy: {}".format(average_accuracy))
+        print("This is the average_accuracy: {}".format(average_accuracy))
 
-        os.chdir('./training_session_gen_{}'.format(i+1))
-        plot_gen_training(avg_acc=acc_list, savefig=True)
-        os.chdir('../')
 
         # Print out the average accuracy each generation.
         logging.info("Generation average: {}".format(average_accuracy * 100))
@@ -121,8 +133,8 @@ def plot_gen_training(avg_acc, savefig = False, show=False):
 
 def main(dataset):
     """Evolve a network."""
-    generations = 5  # Number of times to evole the population.
-    population = 5  # Number of networks in each generation.
+    generations = 10  # Number of times to evole the population.
+    population = 10 # Number of networks in each generation.
     dataset = dataset
 
     nn_param_choices = {
@@ -137,4 +149,4 @@ def main(dataset):
     generate(generations, population, nn_param_choices, dataset)
 
 if __name__ == '__main__':
-    main('fashion_mnist')
+    main('mnist')

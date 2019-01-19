@@ -267,6 +267,5 @@ class Siamese1:
         plt.title("Loss")
         if savefig:
             plt.savefig("training.png")
-            plt.close()
         if show:
             plt.show()
