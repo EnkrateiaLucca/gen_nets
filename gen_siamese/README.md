@@ -1,4 +1,4 @@
-# Evolving a siamese network (with a contrastive loss function) with a genetic algorithm
+# Evolving a siamese network with a genetic algorithm
 
 This code implements a genetic algorithm that evolves a siamese network (with a contrastive loss function) to aid on hyperparameters search. 
 
